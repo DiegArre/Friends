@@ -1,0 +1,73 @@
+{% extends "core/base.html" %}
+{% block titulo %} Friends {% endblock %}
+
+{% block contenido %}
+<div class="container">
+    <h1>Hola, {{request.session.usuario.alias}}!</h1>
+    <div class="row mt-5">
+        <div class="col-6">
+            <p>Here is the list of your friends:</p>
+        {% if amigos|length > 0 %}
+            <table id="show_table" class="display" >
+                <tr>
+                    <th>Alias</th>
+                    <th>Action</th>
+
+                </tr>
+            
+                {% for amigo in amigos %}
+            
+                <tr>
+                    <td>{{amigo.alias}}</td>
+                    <td><a class="badge btn btn-primary rounded-pill" href="/user/{{amigo.id}}">View Profile</a> / <a class="badge btn btn-danger rounded-pill" href="/friends/remove/{{amigo.id}}">Remove as friend</a></td>
+                </tr>
+            
+                {% endfor %}
+            </table>
+        {% else %}
+            
+        <h6 class="text-danger">Aun no tienes AMIGOS :C</h6>
+
+        {% endif %}
+        </div>
+
+
+        <div class="col-6 ">
+            <p>Other Users not on your firend's list:</p>
+            <table id="show_table2" class="display">            
+                <tr>
+                    <th>Alias</th>
+                    <th>Action</th>
+
+                </tr>
+
+                <tr>
+                    {% for noamigo in noamigos %}
+            
+                    <tr>
+                        <td><a href="/user/{{noamigo.id}}">{{noamigo.alias}}</a></td>
+                        <td><a href="/friends/add/{{noamigo.id}}" class=" badge btn btn-success rounded-pill">Add Friend</a></td>
+                    </tr>
+                
+                    {% endfor %}
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %} 
+<script>
+
+$(document).ready(function () {
+    $("#show_table").DataTable();
+});
+
+$(document).ready(function () {
+    $("#show_table2").DataTable();
+});
+
+</script>
+
+{% endblock %}

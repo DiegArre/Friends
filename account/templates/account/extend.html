@@ -1,0 +1,26 @@
+{% extends "core/base.html" %}
+{% block titulo %} Friends Account {% endblock %}
+{% block estilos %}
+<style>
+    .bg-purpura{
+        background-color: #6C63FF;
+    }
+    a{
+        font-size: 14px;
+    }
+</style>
+{% endblock %}
+{% block contenido %}
+
+    {% load static %}
+    <div class="container">
+        <div class="row row-cols-sm-1 row-cols-lg-2 g-lg-5 mt-2"> 
+            <div class="mt-4 col-sm-12 col-lg-6 my-md-auto py-3">
+                {% include "./forms/form_register.html" %}
+            </div>
+            <div class="mt-4 col-sm-12 col-lg-6 my-md-auto py-3">
+                {% include "./forms/form_login.html" %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

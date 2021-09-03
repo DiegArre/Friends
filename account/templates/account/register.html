@@ -1,0 +1,62 @@
+{% extends "core/base.html" %}
+{% block estilos %}
+<style>
+    .bg-purpura{
+        background-color: #6C63FF;
+    }
+    a{
+        font-size: 14px;
+    }
+</style>
+{% endblock %}
+{% block contenido %}
+
+    {% load static %}
+    <div class="container mt-5">
+        <div class="row row-cols-sm-1 row-cols-lg-2 g-lg-5"> 
+            <div class="col-sm-12 col-lg-6">
+                <img class="img-fluid" src="{% static 'img/prueba.svg' %}" alt="">
+            </div>
+            <div class="mt-4 col-sm-12 col-lg-6 my-md-auto py-3">
+                <h2>Registrate</h2>
+                <p>Registrate para poder acceder al contenido!</p>
+                <form action="" method="POST" class="row g-1">
+                    {% csrf_token %}
+                    <div class="row row-cols-2 g-0 col-12">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="InputNombre" name="nombre" placeholder="Nombre" required>
+                            <label for="InputNombre">Nombre</label>
+                        </div>
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="InputApellido" name="alias" placeholder="Apellido" required>
+                            <label for="InputApellido">Alias</label>
+                        </div>
+                    </div>
+                    <div class="form-floating col-12">
+                        <input type="date" class="form-control" id="InputBirthday" name="fecha_nacimiento" placeholder="Fecha Nacimiento" required>
+                        <label for="InputBirthday">Fecha Nacimiento</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="email" class="form-control" id="InputCorreo" name="email" placeholder="Email" required>
+                        <label for="InputCorreo">Email</label>
+                    </div>
+                    <div class="form-floating">
+                        <input id="InputPass" type="password" class="form-control" name="password" placeholder="Password" required>
+                        <label for="InputPass">Password</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" class="form-control" id="InputPassConfirm" name="confirm_pass" placeholder="Confirm Password" required>
+                        <label for="InputPassConfirm">Confirm Password</label>
+                    </div>
+                    <button class="text-light  btn btn-lg bg-purpura mt-2" type="submit">Register</button>
+                    <div class="row mt-1">
+                        <a href="login" class="link-secondary">Ya tienes cuenta? Logueate</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+
